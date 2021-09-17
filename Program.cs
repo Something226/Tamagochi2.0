@@ -17,19 +17,19 @@ namespace Tamagochi
 
             while (named != true)
             {
-                Console.WriteLine("Please name your Tamagochi:");
+                Console.WriteLine("\nPlease name your Tamagochi:");
                 tama1.name = Console.ReadLine();
 
                 string answer = "";
                 while (answer != "y" && answer != "n")
                 {
-                    Console.WriteLine("Your selected name is: " + tama1.name + ", correct?\ny/n");
+                    Console.WriteLine("\nYour selected name is: " + tama1.name + ", correct?\ny/n\n");
                     answer = Console.ReadLine();
                     answer = answer.ToLower();
 
                     if (answer != "y" && answer != "n")
                     {
-                        Console.WriteLine("Please enter a valid answer (y/n)");
+                        Console.WriteLine("\nPlease enter a valid answer (y/n)\n");
 
                     }
                 }

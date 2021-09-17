@@ -1,3 +1,4 @@
+using System.ComponentModel.Design;
 using System.Collections.Generic;
 using System;
 
@@ -10,6 +11,7 @@ namespace Tamagochi
         private int boredom = 0;
 
         private List<string> words = new List<string>();
+        private List<string> foods = new List<string>();
 
         private bool isAlive = true;
 
@@ -84,15 +86,54 @@ namespace Tamagochi
             }
         }
 
+        public void Shop()
+        {
+            int option = 0;
+
+            Console.WriteLine("\nChoose what food you want to buy!\n1)Chocolate Bar\n2)Salad\n3)Burger\n(Type the number of desired food)");
+
+            while (!int.TryParse(Console.ReadLine(), out option) || (option < 1 || option > 3))
+            {
+                Console.WriteLine("Please enter a valid number");
+            }
+
+            if (option == 1)
+            {
+                foods.Add("Chocolate Bar");
+                Console.WriteLine("\nYou bought a Chocolate Bar, Sweet :P\n");
+            }
+            if (option == 2)
+            {
+                foods.Add("Salad");
+                Console.WriteLine("\nYou bought a Salad, Healthy :O\n");
+            }
+            if (option == 3)
+            {
+                foods.Add("Burger");
+                Console.WriteLine("\nYou bought a Burger, Tasty :D\n");
+            }
+        }
+
         public void Feed()
         {
-            Console.WriteLine("\nYou fed " + name + ", they seemed to like it :D\n");
-
-            hunger -= 3;
-
-            if (hunger <= 0)
+            if (foods.Count == 0)
             {
-                hunger = 0;
+                Console.WriteLine("\nYou don't own any food! Even the fridge is empty! :O\n");
+            }
+            else
+            {
+                int selection = generator.Next(foods.Count);
+
+                Console.WriteLine("\nYou fed " + name + " a " + foods[selection] + ", they seemed to like it :D\n");
+
+                foods.RemoveAt(selection);
+
+                hunger -= 3;
+
+                if (hunger <= 0)
+                {
+                    hunger = 0;
+                }
             }
         }
 
@@ -100,12 +141,11 @@ namespace Tamagochi
         {
             while (IsAlive())
             {
-
                 int option = 0;
 
-                Console.WriteLine("\nChoose what you want to do with " + name + "!\n1)Feed\n2)Teach word\n3)Say word\n4)Check " + name + "'s well being :)\n(Type the number of desired action)");
+                Console.WriteLine("Choose what you want to do with " + name + "!\n1)Feed\n2)Teach word\n3)Say word\n4)Go grocery shopping\n5)Check " + name + "'s well being :)\n(Type the number of desired action)");
 
-                while (!int.TryParse(Console.ReadLine(), out option) || (option < 1 || option > 4))
+                while (!int.TryParse(Console.ReadLine(), out option) || (option < 1 || option > 5))
                 {
                     Console.WriteLine("Please enter a valid number");
                     Tick();
@@ -121,6 +161,8 @@ namespace Tamagochi
                     Console.WriteLine("\nWrite the word you want " + name + " to learn :D\n");
                     string addword = Console.ReadLine();
 
+                    Console.WriteLine("\nYou taught " + name + " to say " + addword + ". He is now less stupid :O!\n");
+
                     Teach(addword);
                     Tick();
                 }
@@ -130,6 +172,10 @@ namespace Tamagochi
                     Tick();
                 }
                 if (option == 4)
+                {
+                    Shop();
+                }
+                if (option == 5)
                 {
                     PrintStats();
                 }

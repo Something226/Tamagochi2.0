@@ -69,6 +69,19 @@ namespace Tamagochi
             {
                 Console.WriteLine(name + " is ded :(\n");
             }
+
+            if (hunger >= 6)
+            {
+                Console.WriteLine(name + " is hungry, you should feed him something :O\n");
+            }
+            if (boredom >= 6)
+            {
+                Console.WriteLine(name + " is bored, try doing stuff with him :O\n");
+            }
+            else
+            {
+                Console.WriteLine(name + " is doing alright! :D\n");
+            }
         }
 
         public bool IsAlive()

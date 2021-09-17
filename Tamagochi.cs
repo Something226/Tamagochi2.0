@@ -26,9 +26,15 @@ namespace Tamagochi
         */
         public void Hi()
         {
-
-            Console.WriteLine(name + "Says: " + words[generator.Next(words.Count)] + "\n");
-            ReduceBoredom();
+            if (words.Count == 0)
+            {
+                Console.WriteLine("\n" + name + " doesn't know any words, he stupid :(");
+            }
+            else
+            {
+                Console.WriteLine(name + " Says: " + words[generator.Next(words.Count)] + "\n");
+                ReduceBoredom();
+            }
         }
 
         public void Teach(string word)
@@ -126,7 +132,6 @@ namespace Tamagochi
                 if (option == 4)
                 {
                     PrintStats();
-                    Tick();
                 }
 
             }

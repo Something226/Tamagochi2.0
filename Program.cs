@@ -39,9 +39,9 @@ namespace Tamagochi
                     named = true;
                 }
 
-                tama1.Play();
-
             }
+
+            tama1.Play();
 
         }
 

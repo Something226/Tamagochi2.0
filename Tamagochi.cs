@@ -27,7 +27,7 @@ namespace Tamagochi
         public void Hi()
         {
 
-            Console.WriteLine(name + "\nSays: " + words[generator.Next(words.Count)] + "\n");
+            Console.WriteLine(name + "Says: " + words[generator.Next(words.Count)] + "\n");
             ReduceBoredom();
         }
 
@@ -97,7 +97,7 @@ namespace Tamagochi
 
                 int option = 0;
 
-                Console.WriteLine("Choose what you want to do with " + name + "!\n1)Feed\n2)Teach word\n3)Say word\n4)Check " + name + "'s well being :)\n(Type the number of desired action)");
+                Console.WriteLine("\nChoose what you want to do with " + name + "!\n1)Feed\n2)Teach word\n3)Say word\n4)Check " + name + "'s well being :)\n(Type the number of desired action)");
 
                 while (!int.TryParse(Console.ReadLine(), out option) || (option < 1 || option > 4))
                 {

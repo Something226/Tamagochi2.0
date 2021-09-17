@@ -10,7 +10,7 @@ namespace Tamagochi
         static void Main(string[] args)
         {
             bool named = false;
-            Tamagochi tama1 = new Tamagochi();
+            Tamagochi tama = new Tamagochi();
 
 
             Console.WriteLine("Hello! Welcome to your Tamagochi!");
@@ -18,12 +18,12 @@ namespace Tamagochi
             while (named != true)
             {
                 Console.WriteLine("\nPlease name your Tamagochi:");
-                tama1.name = Console.ReadLine();
+                tama.name = Console.ReadLine();
 
                 string answer = "";
                 while (answer != "y" && answer != "n")
                 {
-                    Console.WriteLine("\nYour selected name is: " + tama1.name + ", correct?\ny/n\n");
+                    Console.WriteLine("\nYour selected name is: " + tama.name + ", correct?\ny/n\n");
                     answer = Console.ReadLine();
                     answer = answer.ToLower();
 
@@ -40,8 +40,9 @@ namespace Tamagochi
                 }
 
             }
+            Console.Clear();
 
-            tama1.Play();
+            tama.Play();
 
         }
 

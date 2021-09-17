@@ -30,7 +30,7 @@ namespace Tamagochi
         {
             if (words.Count == 0)
             {
-                Console.WriteLine("\n" + name + " doesn't know any words, he stupid :(");
+                Console.WriteLine("\n" + name + " doesn't know any words, they are stupid :(");
             }
             else
             {
@@ -45,10 +45,10 @@ namespace Tamagochi
             ReduceBoredom();
         }
 
-        public void Tick()
+        public void Tick(int hungerAmount, int boredomAmount)
         {
-            hunger++;
-            boredom++;
+            hunger += hungerAmount;
+            boredom += boredomAmount;
 
             if (hunger > 10 || boredom > 10)
             {
@@ -119,6 +119,7 @@ namespace Tamagochi
             if (foods.Count == 0)
             {
                 Console.WriteLine("\nYou don't own any food! Even the fridge is empty! :O\n");
+                Tick(1, 1);
             }
             else
             {
@@ -129,6 +130,8 @@ namespace Tamagochi
                 foods.RemoveAt(selection);
 
                 hunger -= 3;
+
+                Tick(0, 2);
 
                 if (hunger <= 0)
                 {
@@ -143,41 +146,59 @@ namespace Tamagochi
             {
                 int option = 0;
 
-                Console.WriteLine("Choose what you want to do with " + name + "!\n1)Feed\n2)Teach word\n3)Say word\n4)Go grocery shopping\n5)Check " + name + "'s well being :)\n(Type the number of desired action)");
+                Console.WriteLine("Choose what you want to do with " + name + "!\n1)Feed\n2)Teach word\n3)Say word\n4)Go grocery shopping\n5)Check " + name + "'s well being :)\n6)Do Nothing :O\n(Type the number of desired action)");
 
-                while (!int.TryParse(Console.ReadLine(), out option) || (option < 1 || option > 5))
+                while (!int.TryParse(Console.ReadLine(), out option) || (option < 1 || option > 6))
                 {
                     Console.WriteLine("Please enter a valid number");
-                    Tick();
+                    Tick(1, 1);
                 }
 
                 if (option == 1)
                 {
+                    Console.Clear();
+
                     Feed();
-                    Tick();
+
                 }
                 if (option == 2)
                 {
+                    Console.Clear();
+
                     Console.WriteLine("\nWrite the word you want " + name + " to learn :D\n");
                     string addword = Console.ReadLine();
 
                     Console.WriteLine("\nYou taught " + name + " to say " + addword + ". He is now less stupid :O!\n");
 
                     Teach(addword);
-                    Tick();
+                    Tick(generator.Next(1, 2), 0);
                 }
                 if (option == 3)
                 {
+                    Console.Clear();
+
                     Hi();
-                    Tick();
+                    Tick(generator.Next(1, 2), 0);
                 }
                 if (option == 4)
                 {
+                    Console.Clear();
+
                     Shop();
+                    Tick(1, 2);
                 }
                 if (option == 5)
                 {
+                    Console.Clear();
+
                     PrintStats();
+                }
+                if (option == 6)
+                {
+                    Console.Clear();
+
+                    Console.WriteLine("You did nothing! How rude! >:(\n");
+                    Tick(4, 4);
                 }
 
             }

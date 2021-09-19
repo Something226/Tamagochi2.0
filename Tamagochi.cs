@@ -74,7 +74,7 @@ namespace Tamagochi
             {
                 Console.WriteLine(name + " is hungry, you should feed him something :O\n");
             }
-            if (boredom >= 6)
+            else if (boredom >= 6)
             {
                 Console.WriteLine(name + " is bored, try doing stuff with him :O\n");
             }

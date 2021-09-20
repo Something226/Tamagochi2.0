@@ -13,7 +13,7 @@ namespace Tamagochi
             Tamagochi tama = new Tamagochi();
 
 
-            Console.WriteLine("Hello! Welcome to your Tamagochi!");
+            Console.WriteLine("\nHello! Welcome to your Tamagochi!");
 
             while (named != true)
             {

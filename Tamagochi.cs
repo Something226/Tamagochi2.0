@@ -34,7 +34,7 @@ namespace Tamagochi
             }
             else
             {
-                Console.WriteLine(name + " Says: " + words[generator.Next(words.Count)] + "\n");
+                Console.WriteLine("\n" + name + " Says: " + words[generator.Next(words.Count)] + "\n");
                 ReduceBoredom();
             }
         }
@@ -159,7 +159,7 @@ namespace Tamagochi
             {
                 int option = 0;
 
-                Console.WriteLine("Choose what you want to do with " + name + "!\n1)Feed\n2)Teach word\n3)Say word\n4)Go grocery shopping\n5)Check " + name + "'s well being :)\n6)Do Nothing :O\n(Type the number of desired action)");
+                Console.WriteLine("\nChoose what you want to do with " + name + "!\n1)Feed\n2)Teach word\n3)Say word\n4)Go grocery shopping\n5)Check " + name + "'s well being :)\n6)Do Nothing :O\n(Type the number of desired action)");
 
                 while (!int.TryParse(Console.ReadLine(), out option) || (option < 1 || option > 6))
                 {
@@ -210,7 +210,7 @@ namespace Tamagochi
                 {
                     Console.Clear();
 
-                    Console.WriteLine("You did nothing! How rude! >:(\n");
+                    Console.WriteLine("\nYou did nothing! How rude! >:(\n");
                     Tick(4, 4);
                 }
 

@@ -23,7 +23,7 @@ namespace Tamagochi
                 string answer = "";
                 while (answer != "y" && answer != "n")
                 {
-                    Console.WriteLine("\nYour selected name is: " + tama.name + ", correct?\ny/n\n");
+                    Console.WriteLine("\nYour selected name is: " + tama.name + ", correct?\ny/n");
                     answer = Console.ReadLine();
                     answer = answer.ToLower();
 
